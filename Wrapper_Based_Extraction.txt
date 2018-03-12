@@ -13,7 +13,9 @@ http://opensourceforu.com/2015/03/python-requests-interacting-with-the-web-made-
 
 
 
-
+IMDB Movies List Wrapper Info:
+-Elements are a part of a div with class "lister-list"
+-Each element is of type class "lister-item mode-detail"
 
 
 

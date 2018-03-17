@@ -27,13 +27,29 @@ class TheNumbersSpider(scrapy.Spider):
     def moviepage_callback(self, response):
         print("yay in callback")
         rows=response.xpath('//div[@id="summary"]/table/tr')
-        print(rows)
+        #print(rows)
+        #the problem here is there is no fix format, need to do regex matching to find the mpaa rating etc
+        rating_data=rows.xpath('.//td[contains(.,"MPAA")]/ancestor::tr')
+        runningtime = rows.xpath('.//td[contains(.,"Running Time")]/parent::tr')
+        #print("rating data xpath ", rating_data)
+        print("rating data is",rating_data.xpath('td[2]/a/text()').extract())
+        #print("runtime xoath", runningtime)
+        print("running time", runningtime.xpath('td[2]/text()').extract())
+        cast_data = response.xpath('//div[@id="cast-and-crew"]//td[contains(.,"Director")]/parent::tr')
+        #print("cast data is" , cast_data)
+        print("director ",cast_data.xpath('.//td[1]//span/text()').extract())
+        finance_data = response.xpath('//table[@id="movie_finances"]//td[contains(.,"Worldwide")]/parent::tr')
+        #print("finance data xpath ", finance_data)
+        print("finance data is", finance_data.xpath('.//td[2]/text()').extract())
         try:
             yield {
+                    'mpaa': rating_data.xpath('td[2]/a/text()').extract()[0],
+                    'runtime': runningtime.xpath('td[2]/text()').extract()[0],
+                    'gross':finance_data.xpath('.//td[2]/text()').extract()[0],
+                    'director':cast_data.xpath('.//td[1]//span/text()').extract()[0]
                     }
         except:
             pass
-        return
 
     def parse(self, response):
         # Get the movie information from each movie item in the list.
@@ -52,8 +68,8 @@ class TheNumbersSpider(scrapy.Spider):
                 continue
             url = 'https://www.the-numbers.com'+url[0]
             print("url is ",url)
-            #pageresp= yield scrapy.Request(url, self.moviepage_callback, headers=self.headers)
-            #print(pageresp)
+            pageresp= yield scrapy.Request(url, self.moviepage_callback, headers=self.headers)
+            print("pageresp is", pageresp)
             try:
                 yield {
                         'title': row.xpath('td[2]/b/a/text()').extract()[0],

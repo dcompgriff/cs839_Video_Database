@@ -31,6 +31,9 @@ class TheNumbersSpider(scrapy.Spider):
         try:
             yield {
                     }
+        except:
+            pass
+        return
 
     def parse(self, response):
         # Get the movie information from each movie item in the list.

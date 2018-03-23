@@ -12,7 +12,8 @@ import matplotlib.pyplot as plt
 #############################################################
 #DATABASE TABLE COLUMN HEADERS
 #############################################################
-DB_COLUMNS = ['title', 'year', 'mpaa', 'runtime', 'genres', 'star_rating','director','stars','gross', 'release_date']
+DB_COLUMNS = ['title', 'year', 'mpaa', 'runtime', 'genres', 'star_rating','metascore_rating','description','director','stars','gross']
+#'release_date']
 
 def main(args):
     # If the generate option is specified, then re-generate the imdb_movies.json data store from the original web page.
@@ -61,14 +62,15 @@ def main(args):
             row.append(movie['star_rating'].strip())
         except:
             row.append("")
-
+        row.append("") #metascore rating
+        row.append("") #empty description
         row.append(movie['director'].strip())
         row.append(",".join(movie['stars']))
         if '$' not in movie['gross']:
             row.append("")
         else:
             row.append(movie['gross'])
-        row.append(movie['release_date'])
+        #row.append(movie['release_date'])
         moviesTable.append(row)
         index += 1
 

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This project follows the guidelines for AnHai's CS 839 Data Analysis course for project stage 1, and contains an institution and organization extractor model (a random forrest), along with the preprocessing code, train and test data sets, and extra corpus files used for performing featurization and post processing.
+This project follows the guidelines for AnHai's CS 839 Data Analysis course for project stage 2, and contains scripts and data for two movie lists from IMDB.com and the-numbers.com. We have the scripts arranged in a code folder and the json and csv formatted data in the data folder. 
 
 ## Links
 
@@ -42,7 +42,8 @@ python scrapeMovieNumbers.py --generate
 ## Authors
 
 * **Daniel Griffin** - [dcompgriff](https://github.com/dcompgriff)
-
+* **Yudhister Satija**
+* **Mitali Rawat**
 
 
 

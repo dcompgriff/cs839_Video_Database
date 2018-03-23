@@ -1,10 +1,8 @@
 # 839 Project Stage 2: IMDB and Movie Numbers Web Page Movie Extraction
 
-This project follows the guidelines for AnHai's CS 839 Data Analysis course for project stage 1, and contains an institution and organization extractor model (a random forrest), along with the preprocessing code, train and test data sets, and extra corpus files used for performing featurization and post processing.
-
 ## Introduction
 
-This extractor parses a set of fake news articles, and extracts institutions or organizations. This includes political parties, universities, companies, websites, and other directly named social organizations. It does NOT include person names, locations, devices or named instruments. The entities in the training and test set folders have been labeled using the tags <[> and <]>. The training and test set files have words and certain kinds of punctuation split to multiple lines. If an entity spans multiple lines, the the opening tag <[> is placed before the first word of the entity (But on the same line, with no space betwee the tag and the word), and after the last word of the entity (But on the same line, with no space between the tag and the word). Below, you will find links to the different data sets we've used, to a pdf describing in further detail our process for performing the entity extraction, and instructions for running our pipeline of code.
+This project follows the guidelines for AnHai's CS 839 Data Analysis course for project stage 1, and contains an institution and organization extractor model (a random forrest), along with the preprocessing code, train and test data sets, and extra corpus files used for performing featurization and post processing.
 
 ## Links
 
